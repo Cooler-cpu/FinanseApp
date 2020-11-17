@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {useHttp} from '../hooks/http.hooks' 
 import {useMessage} from '../hooks/message.hook'
-//import {AuthContext} from '../context/AuthContext'
+import {AuthContext} from '../context/AuthContext'
 
 export const AuthPage = () => {
-    //const auth = useContext(AuthContext)
-    const message = useMessage();
+    const auth = useContext(AuthContext)
+    const message = useMessage()
 
     const {loading, error, request, clearError} = useHttp()
     const  [form, setForm] = useState({      // get the current state of the form
@@ -38,13 +38,12 @@ export const AuthPage = () => {
     }
     // login api
     const loginHandler = async () => {
-        try{
-            const data = await request('/api/auth/login', 'POST', {...form})
-            console.log(data.token, data.userId);
-            message(data.message)
-            //auth.login(data.token, data.userId)      //get json with the token and user id 
+        try{                                                                 // if user login
+            const data = await request('/api/auth/login', 'POST', {...form}) //get json with the token and user id 
+            //console.log(data.token, data.userId);
+            auth.login(data.token, data.userId)    
         } catch (e){
-            console.log("test login handler", e);
+            console.log("error login handler", e);
         }
     }
 
