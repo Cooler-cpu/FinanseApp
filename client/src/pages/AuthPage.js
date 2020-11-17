@@ -1,22 +1,50 @@
-import React, { useState } from 'react'
-import {useHttp} from '../hooks/http.hooks'
+import React, {useContext, useEffect, useState} from 'react'
+import {useHttp} from '../hooks/http.hooks' 
+import {useMessage} from '../hooks/message.hook'
+//import {AuthContext} from '../context/AuthContext'
 
 export const AuthPage = () => {
-    const {loading, error, request} = useHttp()
-    const  [form, setForm] = useState({
+    //const auth = useContext(AuthContext)
+    const message = useMessage();
+
+    const {loading, error, request, clearError} = useHttp()
+    const  [form, setForm] = useState({      // get the current state of the form
         email: '', password: ''
     })
 
+    // if error object changes throw message on client
+    useEffect( () => { // if have a error 
+        message(error)
+        clearError()
+    }, [error, message, clearError])  // add dependencies
+
+    useEffect(() => {
+        window.M.updateTextFields()
+      }, [])
+
     const changeHandler = event => {
-        setForm({ ...form, [event.target.name]: event.target.value})
+        setForm({ ...form, [event.target.name]: event.target.value})  // get data from the form, transfer it from api
     }
 
-    const registerHandler = async () =>{
+    // registration api
+    const registerHandler = async () =>{  
         try{
             const data = await request('/api/auth/register', 'POST', {...form})
             console.log('Data', data)
+            message(data.message)     // message as a result of successful registration
         } catch (e) {
 
+        }
+    }
+    // login api
+    const loginHandler = async () => {
+        try{
+            const data = await request('/api/auth/login', 'POST', {...form})
+            console.log(data.token, data.userId);
+            message(data.message)
+            //auth.login(data.token, data.userId)      //get json with the token and user id 
+        } catch (e){
+            console.log("test login handler", e);
         }
     }
 
@@ -26,7 +54,7 @@ export const AuthPage = () => {
                 <h1>FinanseGuru</h1>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Authenticated</span>
+                        <span className="card-title">Authorization</span>
                         <div>
                             <div className="input-field">
                                 <input placeholder="Input email" 
@@ -53,6 +81,7 @@ export const AuthPage = () => {
                         <button className="btn yellow darken-4" 
                         style={{marginRight: 10}}
                         disabled={loading}
+                        onClick={loginHandler}
                         >
                             Sign in
                         </button>

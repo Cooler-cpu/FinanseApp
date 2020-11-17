@@ -24,7 +24,7 @@ router.post(
         {
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Invalid data into registration'
+                message: 'incorrect data entered'
             })
         }
         console.log("Данные", req.body);
