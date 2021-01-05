@@ -62,6 +62,7 @@ export const AuthPage = () => {
                                 name="email"
                                 className="yellow-input"
                                 onChange = {changeHandler}
+                                autoComplete="off"
                                 />
                                 <label htmlfor="first_name">email</label>
                             </div>
@@ -72,6 +73,7 @@ export const AuthPage = () => {
                                 name="password"
                                 className="yellow-input"
                                 onChange = {changeHandler}
+                                autoComplete="off"
                                 />
                                 <label htmlfor="first_name">password</label>
                             </div>

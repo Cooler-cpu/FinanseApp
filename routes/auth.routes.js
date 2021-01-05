@@ -18,7 +18,7 @@ router.post(
      ],
     async (req, res) => {
     try {
-        console.log("Данные", req.body);
+      
         const errors = validationResult(req);
         if (!errors.isEmpty())
         {
@@ -27,8 +27,7 @@ router.post(
                 message: 'incorrect data entered'
             })
         }
-        console.log("Данные", req.body);
-        // console.log(req.body)
+      
         const {email, password} = req.body
 
         console.log(email, password);
@@ -41,7 +40,7 @@ router.post(
         }
 
         const hashedPassword = await bcrypt.hash(password, 12)
-        const user = new User ({email, password: hashedPassword})
+        const user = new User ({email, password: hashedPassword, balanse: 0})
 
         await user.save() //when promise is end user is registered
 

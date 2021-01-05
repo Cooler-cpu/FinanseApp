@@ -1,0 +1,8 @@
+[1226/003114.816:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1226/004941.070:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1226/005059.975:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1226/005723.706:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1226/195801.839:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1226/200247.070:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1231/235521.742:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\f9a4add2-0395-4892-a4ba-3c65bf232550: Системе не удается найти указанный путь. (0x3)
+[1231/235521.743:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
