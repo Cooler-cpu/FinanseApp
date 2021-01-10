@@ -1,18 +1,19 @@
 const {Schema, model, Types, mongoose} = require('mongoose');
 
-const SchemaSpends = new Schema({ 
-    spendsBy: {
+const SchemaEarnings = new Schema({ 
+    earnBy: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    SpendingsData: [{
+    EarningsData: [{
         date: {
             type: Date,
             required: true
         },
         cost:{
             type: Number,
-            required: true
+            required: true,
+            min: 0
         },
         category:{
             type: String,
@@ -25,4 +26,4 @@ const SchemaSpends = new Schema({
     }]
 })
 
-module.exports = model('Spendings', SchemaSpends)
+module.exports = model('Earnings', SchemaEarnings)

@@ -64,6 +64,53 @@
     padding: 10px;
     display: flex;
   }
+
+
+
+  /* sidebar button */
+
+  .atuin-btn {
+    display: inline-flex;
+    margin: 10px;
+    text-decoration: none;
+    position: relative;
+    font-size: 10px;
+    line-height: 20px;
+    /* padding: 12px 30px; */
+    padding: 6px 8px;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', Тahoma, sans-serif;
+    background: #337AB7;
+    cursor: pointer;
+    border: 2px solid #BFE2FF;
+    transition: transform 0.2s ease-out, padding 0.2s ease-out;
+    overflow: hidden;
+  }
+  .atuin-btn:hover,
+  .atuin-btn:active,
+  .atuin-btn:focus {
+      color: #FFF;
+      transform: rotate(-2deg);
+      padding: 8px 40px 8px 8px;
+  }
+  .atuin-btn:before {
+      content: "\27A4";
+      position: absolute;
+      right: -30px;
+      color: #1C4B73; 
+      transition: right 0.5s cubic-bezier(.97,.01,.97,.55);
+  }
+  .atuin-btn:hover:before,
+  .atuin-btn:active:before,
+  .atuin-btn:focus:before {
+      right: 10px;
+  }
+
+  .sidebar .sidebar-box .button-add_target__open {
+    margin-top: 60px;
+  }
   
   .sidebar{
     max-width: 220px;
@@ -163,6 +210,8 @@ nav a {
   margin: 0 auto;
   display: flex;
   margin-bottom: 15px;
+  height: 252px;
+
 }
 
 .operationAdd{
@@ -190,6 +239,7 @@ nav a {
 .operationAdd_nav_block{
   padding: 0 15px;
 }
+
 
 .operationAdd_form{
   height: 208px;
@@ -318,3 +368,55 @@ label + .MuiInput-formControl {
   color:coral; 
 }
 
+
+/* footer */
+
+.footer-logo{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8em;
+  color: gray;
+  padding: 0px 90px 0px 0px;
+}
+
+
+/* target page */
+
+.sidebar-target{
+  height: 500px;
+  width: 400px;
+  margin: auto;
+}
+
+.target_content{
+  background-color: #FAFAFA;
+}
+
+.pagetitle{
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 18px;
+  width: 100%;
+  display: flex;
+}
+
+
+@media (max-width: 1150px){
+  .container {
+    width: 85%;
+  }
+}
+
+@media (max-width: 952px){
+  .container {
+    width: 98%;
+  }
+}
+  
+
+
+@media (max-width: 1670px){
+  .footer-logo{
+    padding: 0px 0px 0px 0px;
+  }
+}

@@ -1,29 +1,28 @@
-import React, { useEffect, useState, Component , setState} from 'react'
+import React, { useEffect, useState, Component , setState, useContext} from 'react'
+import {AuthContext} from '../context/AuthContext'
 
-import userIdGetter from '../API/userIdGetter'
 
 function ProfilePage(){
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-  
+
+    const userData = useContext(AuthContext);
 
     useEffect(() =>{
 
-      const userData = userIdGetter();
-      console.log(userData.userId);
       const userID = userData.userId;
 
       fetch('/api/profile', {method: 'POST', body:JSON.stringify({
         userID
     }),headers:{'content-type': 'application/json'}})
     .then(function (response) {
-       // alert(response.status); // 200
+        //alert(response.status); // 200
 
         return response.json();
     })
     .then(function (data) {
-      //  console.log(data);
+        //console.log(data);
         setIsLoaded(true);
         setItems(data.items);
     })

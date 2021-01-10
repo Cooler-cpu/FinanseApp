@@ -9,9 +9,11 @@ import Sidebar from '../components/Sidebar'
 function Content(){
     return(
         <div className="content">
+
            <OperationAdd></OperationAdd>
            
            <OperationDisplay></OperationDisplay>
+           
         </div>
     )
 }
@@ -19,12 +21,15 @@ function Content(){
 
 export const MainPage = () => {
     return (
+    <div>
         <div className="page-box">
+
             <Sidebar/>
       
             <Content/>
 
         </div>
+    </div>
     )
 }
 

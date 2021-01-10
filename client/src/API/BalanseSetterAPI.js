@@ -1,21 +1,30 @@
 import axios from 'axios';
-import userIdGetter from './userIdGetter'
+import userDataGetter from './userDataGetter'
+
+import M from 'materialize-css'
+
+export const  BalanseSetter = (data) => {
+
+  const userData = userDataGetter();
+  const userID = userData.userId;
 
 
-function balanseSetter (data){
+  try {
+      axios.post('/api/balanseSet', { data, userID })
+      .then(res => {
 
-   const userData = userIdGetter();
-   const userID = userData.userId;
+        M.toast({html: "Баланс установлен"});
 
-    try {
-        axios.post('/api/balanseSet', { data, userID })
-        .then(res => {
+      }).catch(err => {
         
-        })
-      } catch (e) {
-        console.log(` Axios request failed: ${e}`);
-      }
-    
+         M.toast({html: "Неправильно введенный данные"})
+
+      })
+    } catch (e) {
+      console.log(` Axios request failed: ${e}`);
+    }
+
+
+
 }
 
-export default balanseSetter;

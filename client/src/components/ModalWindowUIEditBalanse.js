@@ -1,52 +1,48 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import balanseSetter from '../API/BalanseSetterAPI'
+import {BalanseSetter} from '../API/BalanseSetterAPI'
 
 import {connect} from 'react-redux'
 import {setBalanse} from '../redux/actions'
 
-class ModalWindowUIEditBalanse extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {value: ''};
+import {useState} from 'react'
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    handleChange(event){
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event){
-        
-        const balanse = Number(this.state.value);
-
-        console.log(this.props.setBalanse(balanse));
+const ModalWindowUIEditBalanse = (props) => {
     
-        balanseSetter(this.state.value);
-        event.preventDefault();
-        this.setState( {value: ''}) 
+    const [form, setForm] = useState({      
+        balanse: ''
+    })
+
+    const changeHandler = event => {
+        setForm({ ...form, [event.target.name]: event.target.value})  
     }
 
-    render(){
-        return(
-            <div className="modal">
-                <form onSubmit={this.handleSubmit}>
-                    <label className="modal-form_balanse__label">
-                    Введите баланс:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                   
-                    <Button  type="submit" value="Отправить" variant="contained" color="primary">
-                    Записать
-                    </Button>
-                </form>
-               
-            </div>
-        )
+    const handleSubmit = event => {
+        const balanse = Number(form.balanse);
+        BalanseSetter(balanse);
+        props.setBalanse(balanse);
+
     }
+
+
+    return(
+        <div className="modal">
+            <form>
+                <label className="modal-form_balanse__label">
+                Введите баланс:
+                <input type="number" name="balanse" onChange={changeHandler} />
+                </label>
+                
+                <Button value="Отправить" variant="contained" color="primary" onClick={handleSubmit}>
+                Записать
+                </Button>
+            </form>
+            
+        </div>
+    )
 }
+
 
 
 const mapDispatchToProps = {

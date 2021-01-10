@@ -76,7 +76,6 @@ SideMenu.defaultProps = {
       <MenuLink>
         <NavLink to="/profile"> Профиль </NavLink>
       </MenuLink>
-      {/* <NavLink to="/profile"> profile </NavLink> */}
       <MenuLink href="/about">О сайте</MenuLink>
       <MenuLink href="/contact">Контакт</MenuLink>
     </>

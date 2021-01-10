@@ -1,7 +1,7 @@
-function userIdGetter(){
+function userDataGetter(){
     const userData = JSON.parse(localStorage.userData);
 
     return userData;
 }
 
-export default userIdGetter
+export default userDataGetter

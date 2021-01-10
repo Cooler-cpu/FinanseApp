@@ -14,13 +14,15 @@ import Button from '@material-ui/core/Button';
 // redux
 import {setBalanseFetch} from '../redux/actions'
 import {useDispatch} from 'react-redux'
+import {pushSpending} from '../redux/actions'
+
 
 const OperationAdd_Spending = ( {props} ) => {
 
         const dispatch = useDispatch();
 
         const [valuesCost, setValues] = React.useState({
-            node: '',
+            note: '',
             cost: '',
             category: '',
         });
@@ -32,9 +34,10 @@ const OperationAdd_Spending = ( {props} ) => {
         const ButtonEvent = (e) => {
 
 
-            dispatch(setBalanseFetch(valuesCost.cost));
+            //dispatch(setBalanseFetch(valuesCost.cost));
+            dispatch(pushSpending(valuesCost.cost, valuesCost.category, valuesCost.note));
 
-            console.log(valuesCost.node);
+            console.log(valuesCost.note);
             console.log(valuesCost.cost);
             console.log(valuesCost.category);  
         };
@@ -54,8 +57,8 @@ const OperationAdd_Spending = ( {props} ) => {
                     label="" 
                     variant="filled" 
       
-                    value={valuesCost.node}
-                    onChange={handleChange('node')}
+                    value={valuesCost.note}
+                    onChange={handleChange('note')}
                     />
 
                     <TextField
@@ -110,18 +113,92 @@ const OperationAdd_Spending = ( {props} ) => {
 }
 
 const OperationAdd_Salary = props => {
+    const dispatch = useDispatch();
+
+        const [valuesCost, setValues] = React.useState({
+            note: '',
+            cost: '',
+            category: '',
+        });
+    
+        const handleChange = (prop) => (event) => {
+            setValues({ ...valuesCost, [prop]: event.target.value});
+        }
+
+        const ButtonEvent = (e) => {
+
+
+            //dispatch(setBalanseFetch(valuesCost.cost));
+            //dispatch(pushSpending(valuesCost.cost, valuesCost.category, valuesCost.note));
+
+            console.log(valuesCost.note);
+            console.log(valuesCost.cost);
+            console.log(valuesCost.category);  
+        };
+
     return(
+
         <div className="operationAdd_form">
-            <div className="operationAdd_form_inputNode">
+            <div className="operationAdd_form_inputNode" style={{marginTop: 8 + 'px'}}>
                 <div className="operationAdd_form_inputNode_title">
                     <p>Примечание: </p>
                 </div>
-                <form  noValidate autoComplete="off">
-                    <TextField id="filled-basic" label="" variant="filled" />
+                <form className="operationAdd_form__Input" noValidate autoComplete="off">
+                    <TextField 
+                    id="filled-basic" 
+                    label="" 
+                    variant="filled" 
+      
+                    value={valuesCost.note}
+                    onChange={handleChange('note')}
+                    />
+
+                    <TextField
+                        id="standard-number"
+                        //label="Цена"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        
+                        onChange={handleChange('cost')}
+                    />
+                    
                 </form>
+               
             </div>
+
+        
+         <div className="operationAdd_form_inputNode" style={{marginTop: 8 + 'px'}}>
+            <div className="operationAdd_form_inputNode_title">
+                    <p>Категория: </p>
+                </div>
+                <div className="operationAdd_form__Input">
+        
+                        <FormControl>
+                            <Select
+                            value={valuesCost.category}
+                            onChange={handleChange('category')}
+                            displayEmpty
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            >
+                            <MenuItem value="">
+                                <em value={'Без категории'}>Без категории</em>
+                    
+                            </MenuItem>
+                            <MenuItem value={'Зарплата'}>Зарплата</MenuItem>
+                            <MenuItem value={'Другое'}>Другое</MenuItem>
+                            </Select>
+                            <FormHelperText>Категория затрат</FormHelperText>
+
+                        
+                        </FormControl>
+                        <Button onClick={ButtonEvent} variant="contained" >Записать</Button> 
+                    </div>
+            </div> 
+        
         </div>
-    )
+    )    
 }
 
 const OperationAddForm = props => {
@@ -135,7 +212,7 @@ const OperationAddForm = props => {
         else{
 
           return (
-               <OperationAdd_Salary/>
+            <OperationAdd_Salary/>
           )
 
         }

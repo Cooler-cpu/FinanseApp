@@ -39,15 +39,23 @@ const Nav_title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `
 
 const Close_icons = styled.i`
 :hover {
   cursor: pointer;
 }
-
 `
+
+const Main_logo_p = styled.p`
+  font-size: 30px;
+`
+
+const Main_logo_span = styled.span`
+  font-size: 30px;
+  color: green;
+`
+
 
 const MainMenu = () => {
   const history = useHistory()
@@ -75,10 +83,15 @@ const MainMenu = () => {
       <Navbar>
         <Nav_title>
             <HamburgerButton />
-            <p>FinanseGuru</p>
+            <Main_logo_p>
+              Finanse
+            </Main_logo_p>
+            <Main_logo_span>
+              Guru
+            </Main_logo_span>
+         
         </Nav_title>
         <Close_icons onClick={logoutHandler} className="material-icons dp48">close</Close_icons>
-
 
       </Navbar>
       <SideMenu />

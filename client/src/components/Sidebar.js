@@ -1,21 +1,20 @@
 import React from 'react'
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {connect} from 'react-redux'
 import ModalWindow from '../components/ModalWindow'
+import {NavLink} from 'react-router-dom'
 
-// import ValuteImg from '../iconsValute.png';
 
 import ValuteImg from '../img/iconsValute.png';
 
 //redux 
 import {setBalanseFetch} from '../redux/actions'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 
 const Sidebar = ( {syncBalanse} ) => {
 
     const dispatch = useDispatch();
-    const balanse = useSelector(state => state.data.balanse)
 
     useEffect(() =>{
         dispatch(setBalanseFetch());
@@ -41,6 +40,16 @@ const Sidebar = ( {syncBalanse} ) => {
                 <div className="button-modal_balanse__open">
                     <ModalWindow buttonOpenModalName="Добавить счет"/>
                 </div>
+
+                <div className="button-add_target__open">
+
+                <NavLink to="/target">
+                    <a class="atuin-btn">Добавить цель</a>
+                </NavLink>
+                       
+                </div>
+
+
             </div>
         </div>
 

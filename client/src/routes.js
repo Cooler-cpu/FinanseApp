@@ -2,9 +2,9 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import {MainPage} from './pages/MainPage'
-import {DetailPage} from './pages/DetailPage'
 import {AuthPage} from './pages/AuthPage'
 import ProfilePage from './pages/ProfilePage'
+import TargetPage from './pages/TargetPage'
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -13,12 +13,13 @@ export const useRoutes = isAuthenticated => {
            <Route path="/profile" exact>
             <ProfilePage></ProfilePage>
           </Route> 
+          <Route path="/target" exact>
+            <TargetPage></TargetPage>
+          </Route>
           <Route path="/app" exact>
             <MainPage />
           </Route>
-          <Route path="/detail/:id">
-            <DetailPage />
-          </Route>
+
           <Redirect to="/app" />
         </Switch>
       )
