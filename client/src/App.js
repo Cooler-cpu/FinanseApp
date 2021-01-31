@@ -8,7 +8,6 @@ import {AuthContext} from './context/AuthContext'
 import NavState from './context/navState';
 import MainMenu from './components/MainMenu';
 
-//import 'materialize-css';
 
 function App() {
 
@@ -27,14 +26,10 @@ function App() {
           <NavState>
            <MainMenu />
          </NavState>  
-
          }
         
         <div class="container">
           {routes}
-          <div className="footer-logo">
-            <p>© FinanseGuru ™ 2020-2021</p>
-          </div>
         </div>
       </Router>
     </AuthContext.Provider>

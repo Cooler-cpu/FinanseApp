@@ -14,7 +14,9 @@ import Button from '@material-ui/core/Button';
 // redux
 import {setBalanseFetch} from '../redux/actions'
 import {useDispatch} from 'react-redux'
+
 import {pushSpending} from '../redux/actions'
+import {pushEarning} from '../redux/actions'
 
 
 const OperationAdd_Spending = ( {props} ) => {
@@ -33,8 +35,6 @@ const OperationAdd_Spending = ( {props} ) => {
 
         const ButtonEvent = (e) => {
 
-
-            //dispatch(setBalanseFetch(valuesCost.cost));
             dispatch(pushSpending(valuesCost.cost, valuesCost.category, valuesCost.note));
 
             console.log(valuesCost.note);
@@ -87,11 +87,10 @@ const OperationAdd_Spending = ( {props} ) => {
                             value={valuesCost.category}
                             onChange={handleChange('category')}
                             displayEmpty
-                            inputProps={{ 'aria-label': 'Without label' }}
+                            // inputProps={{ 'aria-label': 'Without label' }}
                             >
                             <MenuItem value="">
                                 <em value={'Без категории'}>Без категории</em>
-                    
                             </MenuItem>
                             <MenuItem value={'Жилье'}>Жилье</MenuItem>
                             <MenuItem value={'Отдых'}>Отдых</MenuItem>
@@ -128,9 +127,8 @@ const OperationAdd_Salary = props => {
         const ButtonEvent = (e) => {
 
 
-            //dispatch(setBalanseFetch(valuesCost.cost));
-            //dispatch(pushSpending(valuesCost.cost, valuesCost.category, valuesCost.note));
-
+            dispatch(pushEarning(valuesCost.cost, valuesCost.category, valuesCost.note))
+            
             console.log(valuesCost.note);
             console.log(valuesCost.cost);
             console.log(valuesCost.category);  
@@ -268,7 +266,6 @@ export default class OperationAdd extends Component {
                     <div className="operationAdd_nav" style={{ backgroundColor: this.state.border_color}}>
                         <div className="operationAdd_nav_block block_border" onClick={this.HandleClicker1} style={{background: this.state.border_color, color: this.state.color1}}>
                             <p>Расход</p>
-
                         </div>
                         <div className="operationAdd_nav_block" onClick={this.HandleClicker2} style={{background: this.state.background_color2, color: this.state.color2}}>
                             <p>Доход</p>

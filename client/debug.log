@@ -6,3 +6,9 @@
 [1226/200247.070:ERROR:crash_report_database_win.cc(455)] unexpected header
 [1231/235521.742:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\f9a4add2-0395-4892-a4ba-3c65bf232550: Системе не удается найти указанный путь. (0x3)
 [1231/235521.743:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[0126/233051.211:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[0127/010119.834:ERROR:process_info.cc(359)] UncheckedAllocate
+[0127/010119.871:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\e71a92b2-edb0-4113-991f-450a6596e04d: Системе не удается найти указанный путь. (0x3)
+[0127/010127.014:ERROR:process_info.cc(359)] UncheckedAllocate
+[0127/010131.032:ERROR:process_info.cc(359)] UncheckedAllocate
+[0127/010207.425:ERROR:process_info.cc(359)] UncheckedAllocate

@@ -379,7 +379,6 @@ label + .MuiInput-formControl {
   padding: 0px 90px 0px 0px;
 }
 
-
 /* target page */
 
 .sidebar-target{
@@ -400,6 +399,91 @@ label + .MuiInput-formControl {
   display: flex;
 }
 
+.content .target_form{
+  max-width: 500px;
+  padding: 20px;
+  background-color: white;
+  border: solid 1px #DDD;
+  display: flex;
+  flex-direction: column;
+}
+
+.content .target_form .target_form_box{
+  display: flex;
+  flex-direction: column;
+}
+
+.content .target_form .target_form_box h1{
+  /* margin: 0px; */
+  font-size: 30px;
+  margin: 0px 0px 30px 0px;
+}
+
+.content .target_form .target_form_box  .input-field.inline{
+  margin: 0px;
+  max-width: 250px;
+}
+
+.content .target_form .target_form_box .balanse_current{
+  display: flex;
+}
+
+.content .target_form .target_form_box .balanse_current h1{
+  font-size: 25px;
+  margin: 0px 0px 30px 0px;
+}
+  
+
+.content .target_form .target_form_box .input-field.inline .validate{
+  height: 2em;
+}
+
+
+.target_form_box .progress-form_box{
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 10px 20px;
+  background-color: #eee;
+  border: solid #ddd 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-form_box .progress-form_box__note{
+  position: absolute;
+  font-weight: bold;
+}
+
+.progress-form_box .progress-form_box__date{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.target_form .target-save__buton{
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.target_form .target-save__buton .deleteButton:hover{
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.MuiFormControl-root {
+  max-width: 200px;
+}
+
+.MuiOutlinedInput-input{
+  padding: 0px 0px 0px 10px !important;
+}
+
+.MuiNativeSelect-select:focus{
+  border-radius: 10px !important;
+}
 
 @media (max-width: 1150px){
   .container {
@@ -407,12 +491,11 @@ label + .MuiInput-formControl {
   }
 }
 
-@media (max-width: 952px){
+@media (max-width: 950px){
   .container {
     width: 98%;
   }
 }
-  
 
 
 @media (max-width: 1670px){

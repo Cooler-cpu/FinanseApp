@@ -38,7 +38,7 @@ const Sidebar = ( {syncBalanse} ) => {
                 </div>
                 
                 <div className="button-modal_balanse__open">
-                    <ModalWindow buttonOpenModalName="Добавить счет"/>
+                    <ModalWindow buttonOpenModalName="Изменить баланс"/>
                 </div>
 
                 <div className="button-add_target__open">

@@ -3,7 +3,9 @@ import './MainPageStyle/index.css';
 
 import OperationAdd from '../components/OperationAdd';
 import OperationDisplay from '../components/OperationDisplay'
+
 import Sidebar from '../components/Sidebar'
+
 
 
 function Content(){
@@ -28,6 +30,9 @@ export const MainPage = () => {
       
             <Content/>
 
+        </div>
+        <div className="footer-logo">
+                    <p>© FinanseGuru ™ 2020-2021</p>
         </div>
     </div>
     )

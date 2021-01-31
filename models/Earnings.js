@@ -22,7 +22,11 @@ const SchemaEarnings = new Schema({
         note:{
             type: String,
             require: true
-        } 
+        }, 
+        type:{
+            type: String,
+            require: true
+        }
     }]
 })
 

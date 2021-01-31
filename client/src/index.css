@@ -17,3 +17,86 @@ input.yellow-input:focus{
   border-bottom: 1px solid #ffeb3b !important;
   box-shadow: 0 1px 0 0 #ffeb3b !important;
 }  */
+
+.container{
+  min-height: 900px;
+}
+
+.auth_logo{
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.auth_logo h1{
+  margin: 0;
+}
+.auth_logo .auth_logo_label{
+  margin-top: 40px;
+  margin-left: 20px;
+  color: #ada491;
+}
+
+.auth_logo .auth_logo_sec{
+  color: green;
+}
+
+.auth_logo .auth_logo_fst{
+  color: #3d3939;
+}
+
+.card{
+  max-width: 400px;
+  height: 400px;
+  margin: 0;
+}
+
+.auth_display_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+}
+
+.display_main_info{
+  background-color: #2F9645;
+  width: 70%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.display_main_info .display_main_info_wrapper{
+  padding: 30px;
+  display: flex;
+  align-items: center;
+}
+
+
+.display_main_info .display_main_info_label h1{
+  margin-left: 30px;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.display_main_info .display_main_info_label-signUp{
+  margin: 0 auto;
+}
+
+.display_main_info .display_main_info_label-signUp h1{
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+}
+
+
+@media (max-width: 1327px) { 
+  .card{
+    width: 625px;
+    max-width: 625px;
+  }
+  .display_main_info{
+    width: 625px;
+    max-width: 625px;
+  }
+ }
+

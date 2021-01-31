@@ -12,7 +12,6 @@ const config = require('config')
 //models
 const User = require('../models/User')
 const Spendings = require('../models/Spendings')
-
 const Earnings = require('../models/Earnings')
 
 
@@ -64,7 +63,6 @@ router.post(
         }
 
         try{
-
             const data = req.body.data;
 
             const userID = req.body.userID;
@@ -96,8 +94,6 @@ router.post(
     async (req, res) =>
     {
         try {
-
-            console.log("flag!!!!", req.body.userID);
 
             const errors = validationResult(req);
 
@@ -179,7 +175,7 @@ router.post(
             else{
 
                 const DataSpending = [];
-                for(var key in userSpends[0].SpendingsData){
+                for(let key in userSpends[0].SpendingsData){
                     DataSpending[key] = userSpends[0].SpendingsData[key]
                 }   
 
@@ -230,7 +226,8 @@ router.post(
                         date: new Date(), 
                         cost: req.body.cost,
                         category: req.body.category,
-                        note: req.body.note
+                        note: req.body.note,
+                        type: "earn"
                     }]
                 })
                 const response = await Earn.save();
@@ -279,7 +276,7 @@ router.post(
         try{
             userID = req.body.userID.userId;
 
-            const userEarnings = await Earnings.find({ spendsBy:  userID });
+            const userEarnings = await Earnings.find({ earnBy:  userID });
 
             if(!userEarnings.length){
                 // res.send("data is dont exist");
@@ -301,6 +298,77 @@ router.post(
 )
 
 
+//
+router.post(
+    '/getRecordSpends/toDate',  urlencodedParser, 
+    async (req, res) =>
+    {
+
+    const userID = req.body.userID;
+    const DateStart = req.body.DateStart;
+    const DateEnd = req.body.DateEnd;
+
+    const start = new Date(String(DateStart));
+    const end = new Date(String(DateEnd));
+
+    console.log("DateStart", start);
+    console.log("DateEnd", end);
+
+     const userSpends = await Spendings.find({ spendsBy:  userID });
+
+     const DataSpending = [];
+     for(let key in userSpends[0].SpendingsData){
+         DataSpending[key] = userSpends[0].SpendingsData[key]
+     }   
+
+     const CurrDataSpending = [];
+     DataSpending.map( element => {
+        if(element.date >= start && element.date <= end){
+        CurrDataSpending.push(element);
+        }
+        else{
+            return false
+        }
+     })
+
+        res.send(CurrDataSpending);
+    }
+)
+
+
+router.post(
+    '/getRecordEarns/toDate', urlencodedParser, 
+    async (req, res) =>
+    {
+    const userID = String(req.body.userID);
+    const DateStart = req.body.DateStart;
+    const DateEnd = req.body.DateEnd;
+
+    const start = new Date(String(DateStart));
+    const end = new Date(String(DateEnd));
+    console.log(userID)
+
+    const userEarnings = await Earnings.find({ earnBy:  userID });
+
+
+    const DataEarnings = [];
+    for(let key in userEarnings[0].EarningsData){
+        DataEarnings[key] = userEarnings[0].EarningsData[key]
+    } 
+
+    const CurrDataEarnings = [];
+    DataEarnings.map( element => {
+        if(element.date >= start && element.date <= end){
+        CurrDataEarnings.push(element);
+        }
+        else{
+            return false
+        }
+     })
+
+        res.send(CurrDataEarnings);
+    }
+)
 
 
 module.exports = router
