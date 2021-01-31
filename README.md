@@ -1,6 +1,6 @@
 # FinanseApp
-#MERN finanse Application. calculation of the money spent/earn per day. 
-#MongoDB, Express, React/Redux, Node.js.
+MERN finanse Application. calculation of the money spent/earn per day. 
+MongoDB, Express, React/Redux, Node.js.
 
 1. git clone https://github.com/Cooler-cpu/FinanseApp
 2. npm install
